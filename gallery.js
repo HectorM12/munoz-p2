@@ -105,3 +105,22 @@ function GalleryImage(location, description, date, img) {
   console.log("Description: " + myGalleryImage.description);
   console.log("Date: " + myGalleryImage.date);
   console.log("Image URL: " + myGalleryImage.img);
+
+  $(document).ready(function() {
+    $('img.moreIndicator').click(function() {
+        if ($(this).hasClass('rot90')) {
+            $(this).removeClass('rot90').addClass('rot270');
+        } else {
+            $(this).removeClass('rot270').addClass('rot90');
+        }
+
+        // Assuming div.details is the target for slideToggle
+        $('div.details').fadeToggle();
+    });
+});
+
+$(document).ready(function() {
+    var galleryWidth = $('#gallery').width();
+    var nextPhotoWidth = $('#nextPhoto').width();
+    $('#nextPhoto').css('left', galleryWidth - nextPhotoWidth);
+});
