@@ -224,3 +224,33 @@ $(".selector").on("mouseover", function () {
 });
 
   /*call to access the information in the JSON file. */
+
+  $(document).ready(function() {
+    // Get the value of the 'json' parameter from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const jsonParam = urlParams.get('json');
+
+    const defualtJsonFile = 'images.json';
+
+    const jsonFile = json param && is ValidJsonFile(jsonParam) ? jsonParam : defaultJsonFile;
+
+    $.getJSON(jsonFile, function(data) {
+      // Process the JSON data and update the gallery
+      updateGallery(data);
+  });
+
+  // Function to check if a given JSON file is valid
+  function isValidJsonFile(file) {
+      // Implement your validation logic here
+      // For simplicity, you can check if the file name ends with '.json'
+      return file.endsWith('.json');
+  }
+
+  // Function to update the gallery with the provided JSON data
+  function updateGallery(data) {
+      // Implement your gallery update logic here
+      // For example, you can iterate through the data and display images
+      // Update the gallery HTML as needed
+      $('#gallery').html('<p>Gallery Updated!</p>');
+  }
+});
